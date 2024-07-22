@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #fffaf5;
+  font-size: 14px;
+  min-height: 100vh;
+  overflow-y: auto;
+  background-image: url(img/bg-4.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Open Sans", sans-serif;
+  opacity: 0; /* Start invisible */
+  transform: translateY(20px); /* Start slightly down */
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in; /* Smooth transition */
+}
+
+body.loaded {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Slide in */
+}
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-size: 25px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0px);
+}
+
+.nav li {
+  margin-right: 20px;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  position: relative;
+  font-size: 1.1em;
+  color: #333;
+  text-decoration: none;
+  padding: 6px 20px;
+  transition: 0.5s;
+}
+
+.nav li a:hover {
+  color: #0cbc67;
+  transition: 1s ease-out;
+}
+
+nav a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-bottom: 2px solid #0cbc67;
+  border-radius: 15px;
+  transform: scale(0) translateY(50px);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+nav a:hover span {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+h1 {
+  font-size: 45px;
+  color: #487307;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  margin: 5px;
+}
+
+span {
+  font-family: "League Spartan", sans-serif;
+  color: #0cbc67;
+  line-height: 1;
+  font-size: 1.5em;
+  background-image: linear-gradient(
+    to left,
+    #cc922e,
+    #3498db,
+    #9b59b6,
+    #bc0c0c
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: animate 5s linear infinite;
+  -webkit-backdrop-size: 500%;
+  backdrop-size: 500%;
+  background-size: 500%;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 100%;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  align-items: center;
+}
+
+.collapsible {
+  max-width: 450px;
+  overflow: hidden;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.collapsible input[type="checkbox"] {
+  display: none;
+}
+
+.collapsible label {
+  position: relative;
+  font-weight: 600;
+  background: white;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.1), 0 4px 11px 0 rgba(0, 0, 0, 0.08);
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 15px 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.collapsible label:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.01);
+  box-shadow: 0 0 0 4px #487307;
+}
+
+.collapsible label::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transform-origin: center;
+  width: 18px;
+  height: 18px;
+  background: url(arro.png) no-repeat center;
+  background-size: contain;
+  transition: transform 0.3s ease;
+}
+
+.collapsible input[type="checkbox"]:checked + label::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.collapsible-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  border-radius: 4px;
+  line-height: 1.4;
+  padding: 0 20px;
+}
+
+.collapsible input[type="checkbox"]:checked ~ .collapsible-text {
+  max-height: 1000px;
+  padding: 10px 20px;
+}
+
+h2 {
+  text-align: left;
+  margin: 20px 0;
+}
+
+p {
+  text-align: left;
+}
+
+@media (max-width: 1200px) {
+  .nav {
+    font-size: 20px;
+    padding: 20px;
+  }
+
+  .nav li {
+    margin-right: 15px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  @media (max-width: 1200px) {
+    .wrapper {
+      max-width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .nav {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .nav li {
+    margin-right: 10px;
+  }
+
+  h1 {
+    font-size: 35px;
+  }
+
+  .wrapper {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    font-size: 16px;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .nav li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .wrapper {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .collapsible {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .wrapper {
+    font-size: 12px;
+  }
+
+  .collapsible {
+    max-width: 100%;
+  }
+}
+
+.wheat-flaticon {
+  display: block;
+  margin: 0 auto;
+  width: 40px;
+  height: auto;
+}
